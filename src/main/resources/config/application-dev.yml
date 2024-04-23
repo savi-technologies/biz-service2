@@ -59,17 +59,20 @@ spring:
       port: 8500
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/bizService2
-    username: bizService2
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=biz_service_two
+    username: postgres
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
-  elasticsearch:
-    uris: http://localhost:9200
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=biz_service_two
+    user: postgres
+    password:
+  elasticsearch:
+    uris: http://localhost:9200
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
